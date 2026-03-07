@@ -2,7 +2,7 @@
 
 :root {
   --font-size: 16px;
-  /* Fon uchun rasmdagidek juda och krem/sut rangi */
+  /* Fon uchun rasmdagidek yumshoq krem/sut rangi */
   --background: #F8F9F5; 
   --foreground: #1A1C19;
   
@@ -12,11 +12,10 @@
   --popover: #ffffff;
   --popover-foreground: #1A1C19;
 
-  /* Rasmdagi asosiy to'q yashil organik rang */
+  /* Rasmdagi asosiy organik to'q yashil */
   --primary: #2D6A4F; 
   --primary-foreground: #ffffff;
 
-  /* Ikkinchi darajali yumshoq yashil */
   --secondary: #D8E2DC;
   --secondary-foreground: #2D6A4F;
 
@@ -29,49 +28,53 @@
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
 
-  --border: rgba(0, 0, 0, 0.06);
+  /* Build xatosini tuzatish uchun o'zgaruvchi */
+  --border: rgba(0, 0, 0, 0.08);
   --input-background: #F1F3F0;
   
-  /* Burchaklarni rasmdagidek juda yumshoq qilamiz */
-  --radius: 1.5rem; /* 24px */
+  /* Burchaklarni rasmdagidek juda yumshoq (24px) qilamiz */
+  --radius: 1.5rem;
 
   --font-weight-medium: 600;
   --font-weight-normal: 400;
 }
 
 @theme inline {
+  /* Build xatosi: border-border klassi ishlashi uchun buni qo'shish shart */
+  --color-border: var(--border);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-card: var(--card);
+  --color-input-background: var(--input-background);
+  
   --radius-lg: var(--radius);
-  /* Boshqa o'zgaruvchilar... */
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 8px);
 }
 
 @layer base {
   * {
+    /* Endi border-border klassi taniladi */
     @apply border-border outline-ring/50;
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif; /* Agar fonts.css bo'lsa */
   }
 
-  /* Kartochkalar uchun maxsus "soft shadow" effekti */
+  /* Kartochkalar uchun rasmdagi "soft shadow" effekti */
   [data-slot=card] {
     @apply shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Tugmalarni rasmdagidek to'liq yumaloq qilish */
   button {
     @apply rounded-full font-semibold transition-transform active:scale-95;
   }
 
-  /* Rasmdagi qidiruv paneli uslubi */
   input {
-    @apply rounded-2xl border-none bg-input-background px-5 py-3;
+    @apply rounded-2xl border-none bg-input-background px-5 py-3 outline-none focus:ring-2 focus:ring-primary/20;
   }
 }
