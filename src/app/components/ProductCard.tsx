@@ -2,20 +2,17 @@
 import { Product } from "../data/mockData";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
-import { useCart } from "../context/CartContext"; // Context'ni chaqiramiz
-import { toast } from "sonner"; // Chiroyli bildirishnoma uchun (agar o'rnatilgan bo'lsa)
+import { useCart } from "../CartContext"; // <-- MANA SHU YER TO'G'RILANDI
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  // Savatga qo'shish funksiyasini olamiz
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product, 1); // 1 dona qo'shish
-    // Ekranda chiroyli xabar chiqarish (ixtiyoriy)
+    addToCart(product, 1);
     alert(`${product.name} savatga qo'shildi!`); 
   };
 
