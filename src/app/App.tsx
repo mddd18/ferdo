@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router';
 import { router } from './routes';
-import { CartProvider } from './CartContext'; // Manzil to'g'rilandi
+import { CartProvider } from './CartContext';
 
 export default function App() {
   return (
